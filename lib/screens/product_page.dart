@@ -1,3 +1,4 @@
+import 'package:ecom_pro/screens/single_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/product_controller.dart';
@@ -20,10 +21,16 @@ class ProductsPage extends StatelessWidget {
           itemCount: productController.products.length,
           itemBuilder: (context, index) {
             final product = productController.products[index];
-            return ListTile(
-              leading: Image.network(product['image'], width: 50),
-              title: Text(product['title']),
-              subtitle: Text("\$${product['price']}"),
+            return InkWell(
+              onTap: () {
+                // Navigate to product details page with product ID
+                Get.to(() => SingleProductPage(productId: product['id']));
+              },
+              child: ListTile(
+                leading: Image.network(product['image'], width: 50),
+                title: Text(product['title']),
+                subtitle: Text("\$${product['price']}"),
+              ),
             );
           },
         );
