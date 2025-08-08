@@ -3,42 +3,32 @@ import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  final LoginController controller = Get.put(LoginController());
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  LoginPage({super.key});
+  final LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      appBar: AppBar(title: Text("Login")),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: usernameController,
-              decoration: const InputDecoration(labelText: "Username"),
+              onChanged: (val) => loginController.username.value = val,
+              decoration: InputDecoration(labelText: "Username"),
             ),
-            const SizedBox(height: 16),
             TextField(
-              controller: passwordController,
+              onChanged: (val) => loginController.password.value = val,
               obscureText: true,
-              decoration: const InputDecoration(labelText: "Password"),
+              decoration: InputDecoration(labelText: "Password"),
             ),
-            const SizedBox(height: 32),
-            Obx(() => controller.isLoading.value
-                ? const CircularProgressIndicator()
+            SizedBox(height: 20),
+            Obx(() => loginController.isLoading.value
+                ? CircularProgressIndicator()
                 : ElevatedButton(
-                    onPressed: () {
-                      controller.login(
-                        usernameController.text.trim(),
-                        passwordController.text.trim(),
-                      );
-                    },
-                    child: const Text("Login"),
+                    onPressed: () => loginController.login(),
+                    child: Text("Login"),
                   )),
           ],
         ),
