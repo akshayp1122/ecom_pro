@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import '../models/login_response.dart';
+// import '../models/login_response.dart';
 import 'product_controller.dart';
 
 class LoginController extends GetxController {
@@ -22,7 +22,6 @@ class LoginController extends GetxController {
         "username": username.value.trim(),
         "password": password.value.trim(),
       };
-      print("→ Sending login payload: $data");
 
       final response = await _dio.post(
         'https://fakestoreapi.com/auth/login',
@@ -30,11 +29,12 @@ class LoginController extends GetxController {
         options: Options(headers: {"Content-Type": "application/json"}),
       );
 
-      print("← Response status: ${response.statusCode}, data: ${response.data}");
-
-      if (response.statusCode == 200 || response.statusCode == 201 && response.data != null && response.data['token'] != null) {
-        final loginResponse = LoginResponse.fromJson(response.data);
-        Get.snackbar("Success", "Logged in. Token: ${loginResponse.token}");
+      if (response.statusCode == 200 ||
+          response.statusCode == 201 &&
+              response.data != null &&
+              response.data['token'] != null) {
+        // final loginResponse = LoginResponse.fromJson(response.data);
+        // Get.snackbar("Success", "Logged in. Token: ${loginResponse.token}");
 
         // ✅ Create ProductController and fetch products immediately
         final productController = Get.put(ProductController());
@@ -48,7 +48,6 @@ class LoginController extends GetxController {
         Get.snackbar("Error", msg.toString());
       }
     } catch (e) {
-      print("‼ Error in login: $e");
       Get.snackbar("Error", e.toString());
     } finally {
       isLoading(false);
