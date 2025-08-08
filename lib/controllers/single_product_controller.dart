@@ -13,7 +13,6 @@ class SingleProductController extends GetxController {
       final response = await _dio.get('https://fakestoreapi.com/products/$id');
       product.value = response.data;
     } catch (e) {
-      print("Error fetching product: $e");
     } finally {
       isLoading(false);
     }

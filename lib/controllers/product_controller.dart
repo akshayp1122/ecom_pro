@@ -19,14 +19,11 @@ class ProductController extends GetxController {
 
       if (response.statusCode == 200 && response.data != null) {
         products.assignAll(response.data); // Update observable list
-        print("✅ Products fetched: ${products.length}");
       } else {
         products.clear();
-        print("⚠ No products found in API response");
       }
     } catch (e) {
       products.clear();
-      print("‼ Error fetching products: $e");
     } finally {
       isLoading(false);
     }

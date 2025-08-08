@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF6A11CB), Color.fromARGB(255, 181, 172, 131)], 
+            colors: [Color(0xFF6A11CB), Color.fromARGB(255, 181, 172, 131)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -29,7 +29,6 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // App Logo
                     Icon(Icons.lock_outline,
                         size: 80, color: Colors.blueAccent),
                     const SizedBox(height: 15),
@@ -51,8 +50,7 @@ class LoginPage extends StatelessWidget {
 
                     // Username
                     TextField(
-                      onChanged: (val) =>
-                          loginController.username.value = val,
+                      onChanged: (val) => loginController.username.value = val,
                       decoration: InputDecoration(
                         labelText: "Username",
                         prefixIcon: Icon(Icons.person_outline),
@@ -67,8 +65,7 @@ class LoginPage extends StatelessWidget {
 
                     // Password
                     TextField(
-                      onChanged: (val) =>
-                          loginController.password.value = val,
+                      onChanged: (val) => loginController.password.value = val,
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Password",
@@ -102,7 +99,7 @@ class LoginPage extends StatelessWidget {
                               : const Text(
                                   "Login",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                      color: Colors.white,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
                                 ),

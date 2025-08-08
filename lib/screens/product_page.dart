@@ -23,7 +23,8 @@ class ProductsPage extends StatelessWidget {
             children: [
               // App Bar
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -36,7 +37,8 @@ class ProductsPage extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.shopping_cart, color: Colors.white),
+                      icon:
+                          const Icon(Icons.shopping_cart, color: Colors.white),
                       onPressed: () {},
                     )
                   ],
@@ -69,7 +71,8 @@ class ProductsPage extends StatelessWidget {
               Expanded(
                 child: Obx(() {
                   if (productController.isLoading.value) {
-                    return const Center(child: CircularProgressIndicator(color: Colors.white));
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.white));
                   }
 
                   var filteredProducts = productController.products.where((p) {
@@ -90,7 +93,8 @@ class ProductsPage extends StatelessWidget {
 
                   return GridView.builder(
                     padding: const EdgeInsets.all(16),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 0.72,
                       crossAxisSpacing: 12,
@@ -101,7 +105,8 @@ class ProductsPage extends StatelessWidget {
                       final product = filteredProducts[index];
                       return GestureDetector(
                         onTap: () {
-                          Get.to(() => SingleProductPage(productId: product['id']));
+                          Get.to(() =>
+                              SingleProductPage(productId: product['id']));
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -120,7 +125,8 @@ class ProductsPage extends StatelessWidget {
                             children: [
                               // Product Image
                               ClipRRect(
-                                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                                borderRadius: const BorderRadius.vertical(
+                                    top: Radius.circular(16)),
                                 child: Image.network(
                                   product['image'],
                                   height: 150,
@@ -141,7 +147,8 @@ class ProductsPage extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
                                 child: Text(
                                   "\$${product['price']}",
                                   style: const TextStyle(
